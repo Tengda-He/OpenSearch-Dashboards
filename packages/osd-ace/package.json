@@ -8,6 +8,9 @@
     "build": "node ./scripts/build.js",
     "osd:bootstrap": "yarn build --dev"
   },
+  "resolutions": {
+    "**/webpack": "^5.70.0"
+  },
   "dependencies": {
     "brace": "0.11.1"
   },
@@ -15,7 +18,6 @@
     "@osd/dev-utils": "1.0.0",
     "@osd/babel-preset": "1.0.0",
     "raw-loader": "^4.0.2",
-    "typescript": "4.0.2",
-    "webpack": "^4.41.5"
+    "typescript": "4.0.2"
   }
 }

@@ -51,7 +51,7 @@ exports.getWebpackConfig = ({ dev = false } = {}) => ({
     'osd-ui-shared-deps.v8.light': ['@elastic/eui/dist/eui_theme_amsterdam_light.css'],
   },
   context: __dirname,
-  devtool: dev ? '#cheap-source-map' : false,
+  devtool: dev ? 'cheap-source-map' : false,
   output: {
     path: UiSharedDeps.distDir,
     filename: '[name].js',
@@ -117,10 +117,21 @@ exports.getWebpackConfig = ({ dev = false } = {}) => ({
       moment: MOMENT_SRC,
     },
     extensions: ['.js', '.ts'],
+    fallback: {
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "path": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "stream": false,
+      "crypto": false
+    }
   },
 
   optimization: {
-    noEmitOnErrors: true,
+    emitOnErrors: false,
     splitChunks: {
       cacheGroups: {
         'osd-ui-shared-deps.@elastic': {
